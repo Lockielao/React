@@ -1,0 +1,20 @@
+.board-main {
+  height: 100%;
+}
+
+.board-logo {
+  height: 40px;
+  margin: 20px;
+  padding-left: 45px;
+  background: url(../assets/my.jpeg) left/contain no-repeat;
+  box-sizing: border-box;
+  color: #fff;
+  line-height: 40px;
+  font-size: 24px;
+}
+.board-content {
+  background-color: #fff;
+  margin: 20px;
+  padding: 20px;
+}
+

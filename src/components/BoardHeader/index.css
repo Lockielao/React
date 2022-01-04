@@ -1,0 +1,17 @@
+.header {
+  background-color: #fff;
+  padding: 0;
+  height: 84px;
+  line-height: 84px;
+}
+
+.header-trigger {
+  padding-left: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.header-trigger:hover {
+  color: #1890ff;
+}

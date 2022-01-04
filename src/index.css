@@ -1,73 +1,10 @@
+@import '~antd/dist/antd.css';
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
-}
-
-ol,
-ul {
-  padding-left: 30px;
-}
-
-li {
-  margin-bottom: 10px;
-}
-
-.active,
-.active button {
-  font-weight: bold;
-  color: #F08080;
-}
-
-button {
-  background: #fff;
-  border: 1px solid #999;
-}
-
-.active-bg {
-  background-color: #84f94a;
-}
-
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.status {
-  margin-bottom: 10px;
-}
-
-.square {
-  float: left;
-  font-size: 50px;
-  font-weight: bold;
-  line-height: 100px;
-  height: 100px;
-  margin-right: -1px;
-  margin-top: -1px;
+  margin: 0;
   padding: 0;
-  text-align: center;
-  width: 100px;
 }
-
-.square:focus {
-  outline: none;
-}
-
-.kbd-navigation .square:focus {
-  background: #ddd;
-}
-
-.game {
-  display: flex;
-  flex-direction: row;
-}
-
-.game-info {
-  margin-left: 20px;
-}
-.info-title {
-  margin-bottom: 10px;
-  font-size: 20px;
-  font-weight: bold;
+#root {
+  width: 100%;
+  height: 100%;
 }
