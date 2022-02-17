@@ -1,17 +1,24 @@
+import React from 'react'
 import {
   BrowserRouter,
   useRoutes,
   Navigate
 } from 'react-router-dom';
-import { TicTacToe } from '../components/TicTacToe';
-import { List } from '../components/List';
 import store from '../store';
-import {
-  Dashboard,
-  Demo,
-  Login,
-} from '../pages'
+import Spinner from '../components/Spinner'
 import { HomeOutlined, AppstoreOutlined, NumberOutlined } from '@ant-design/icons';
+
+// 懒加载
+const lazyLoad = (path, isComponent = false) => {
+  // lazy只能引入export default的
+  const Comp = isComponent ? React.lazy(() => import(`../components/${path}`)) : React.lazy(() => import(`../pages/${path}`))
+  return (
+    <React.Suspense fallback={<Spinner />}>
+      <Comp />
+    </React.Suspense>
+  )
+}
+
 function RequireAuth({ children }) {
   const userInfo = store.getState()
   if (userInfo && userInfo.login && userInfo.login.isLogin) {
@@ -23,13 +30,13 @@ function RequireAuth({ children }) {
 const menu = [
   {
     path: '/home',
-    element: <RequireAuth><Dashboard /></RequireAuth>,
+    element: <RequireAuth>{lazyLoad('Dashboard')}</RequireAuth>,
     name: '主页',
     icon: <HomeOutlined />,
     children: [
       {
         path: 'demo',
-        element: <Demo />,
+        element: lazyLoad('Demo'),
         name: '示例',
         icon: <AppstoreOutlined />,
         children: [
@@ -37,12 +44,12 @@ const menu = [
             path: 'game',
             name: '三连棋',
             icon: <NumberOutlined />,
-            element: <TicTacToe />
+            element: lazyLoad('TicTacToe', 1)
           },
           {
             path: 'list',
             name: '列表',
-            element: <List />
+            element: lazyLoad('List', 1)
           },
         ]
       },
@@ -50,7 +57,7 @@ const menu = [
   },
   {
     path: '/login',
-    element: <Login />,
+    element: lazyLoad('Login'),
   }
 ]
 

@@ -35,7 +35,7 @@ class Board extends React.Component {
   }
 }
 
-export class TicTacToe extends React.Component {
+class TicTacToe extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -151,3 +151,4 @@ export class TicTacToe extends React.Component {
     );
   }
 }
+export default TicTacToe

@@ -1,10 +1,11 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-export function Demo() {
+function Demo() {
   return (
     <>
       <Outlet />
     </>
   )
 }
+export default Demo

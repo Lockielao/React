@@ -8,7 +8,7 @@ function Repeat(props) {
   return <div>{items}</div>;
 }
 
-export class List extends Component {
+class List extends Component {
   render() {
     return (
       <Repeat numTimes={10}>
@@ -17,3 +17,4 @@ export class List extends Component {
     )
   }
 }
+export default List

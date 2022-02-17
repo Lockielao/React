@@ -7,7 +7,7 @@ import { BoardCrumb } from '../components/BoardCrumb'
 import { BoardMenu } from '../components/BoardMenu'
 const { Sider, Content } = Layout;
 
-export function Dashboard() {
+function Dashboard() {
   const [collapsed, setCollapsed] = useState(false);
   function handleHeaderClick() {
     setCollapsed(!collapsed)
@@ -28,3 +28,4 @@ export function Dashboard() {
     </Layout>
   )
 }
+export default Dashboard

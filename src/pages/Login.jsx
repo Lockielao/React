@@ -6,7 +6,7 @@ import { Form, Input, Button, Checkbox, message } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone, UserOutlined, KeyOutlined } from '@ant-design/icons';
 import './Login.css'
 
-export function Login() {
+function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -63,3 +63,4 @@ export function Login() {
     </div>
   )
 }
+export default Login
