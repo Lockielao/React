@@ -1,27 +1,26 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
 import './Dashboard.css'
 import { BoardHeader } from '../components/BoardHeader'
+import { BoardCrumb } from '../components/BoardCrumb'
+import { BoardMenu } from '../components/BoardMenu'
 const { Sider, Content } = Layout;
 
 export function Dashboard() {
   const [collapsed, setCollapsed] = useState(false);
+  function handleHeaderClick() {
+    setCollapsed(!collapsed)
+  }
   return (
     <Layout className="board-main">
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="board-logo">{!collapsed && 'Lockielao'}</div>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1" icon="">
-            nav 1
-          </Menu.Item>
-          <Menu.Item key="2" icon="">
-            nav 2
-          </Menu.Item>
-        </Menu>
+        <BoardMenu />
       </Sider>
       <Layout>
-        <BoardHeader collapsed={collapsed} onClick={() => setCollapsed(!collapsed)}/>
+        <BoardHeader collapsed={collapsed} onClick={() => handleHeaderClick()}/>
+        <BoardCrumb />
         <Content className="board-content">
           <Outlet />
         </Content>

@@ -144,22 +144,10 @@ export class TicTacToe extends React.Component {
         </div>
         <div className="game-info">
           <div className="info-title">{status}</div>
-          <div>排序：<button onClick={this.handleOrder}>{this.state.order ? '升序' : '降序'}</button></div>
+          <div className="info-sort">排序：<button onClick={this.handleOrder}>{this.state.order ? '升序' : '降序'}</button></div>
           <ol reversed={this.state.order ? true : false}>{moves}</ol>
         </div>
       </div>
     );
   }
 }
-
-// function TestForm() {
-//   return (
-//     <form>
-//       <label>
-//         名字:
-//         <input type="text" name="name" />
-//       </label>
-//       <input type="submit" value="提交" />
-//     </form>
-//   )
-// }

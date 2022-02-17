@@ -1,4 +1,6 @@
-@import '~antd/dist/antd.css';
+/* @import '~antd/dist/antd.css'; */
+@import 'antd/dist/antd.variable.min.css';
+
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 0;
