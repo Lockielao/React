@@ -32,3 +32,10 @@
 .register-btn {
   margin-top: 10px;
 }
+
+.login-code {
+  display: inline-block;
+  width: 170px;
+  margin-left: 10px;
+  line-height: 1;
+}
