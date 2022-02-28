@@ -32,3 +32,8 @@
 .header-color-picker {
   margin-top: 20px;
 }
+
+.header-avatar {
+  margin: 0 20px 0 50px;
+  cursor: pointer;
+}

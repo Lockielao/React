@@ -2,7 +2,7 @@ import {
   createSlice
 } from '@reduxjs/toolkit'
 
-const initialState = {
+const initialState = localStorage.getItem('reactuserinfo') ? JSON.parse(localStorage.getItem('reactuserinfo')) : {
   isLogin: false,
 }
 
@@ -15,17 +15,16 @@ const loginSlice = createSlice({
       console.log('action: ', action);
       switch (action.payload.type) {
         case 'in':
-          if (action.payload.info.remember) {
-            localStorage.setItem('userinfo', JSON.stringify(action.payload.info))
-          }
           state = Object.assign({
             isLogin: true
           }, action.payload.info);
-          console.log('state: ', state);
+          if (action.payload.info.remember) {
+            localStorage.setItem('reactuserinfo', JSON.stringify(state))
+          }
           return state;
         case 'out':
-          if (localStorage.getItem('userinfo')) {
-            localStorage.removeItem('userinfo')
+          if (localStorage.getItem('reactuserinfo')) {
+            localStorage.removeItem('reactuserinfo')
           }
           state = {
             isLogin: false,
@@ -35,10 +34,6 @@ const loginSlice = createSlice({
           return state;
       }
     },
-    selectUserInfo: (state) => {
-      console.log('selectUserInfo state: ', state);
-      return state
-    }
   }
 })
 

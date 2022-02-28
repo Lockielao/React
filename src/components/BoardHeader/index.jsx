@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { loginChanged } from '../../features/login'
 import { TwitterPicker } from 'react-color';
-import { Layout, Button, ConfigProvider } from 'antd';
+import { Avatar, Layout, Button, message, ConfigProvider, Popover } from 'antd';
 // import enUS from 'antd/lib/locale/en_US';
 // import zhCN from 'antd/lib/locale/zh_CN';
 import {
@@ -13,6 +16,9 @@ const { Header } = Layout;
 export function BoardHeader(props) {
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [globalConfig, setGlobalConfig] = useState({});
+  const loginStatus = useSelector(state => state.login)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   useEffect(() => {
     console.log('init')
     let defaultConfig = {
@@ -38,7 +44,15 @@ export function BoardHeader(props) {
     localStorage.setItem('globalConfig', JSON.stringify(mergedConfig));
     ConfigProvider.config(mergedConfig);
   }
+  const loginout = () => {
+    dispatch(loginChanged({ type: 'out' }))
+    message.success('注销成功')
+    navigate('/login', { replace: true })
+  }
   const presetColors = ['#6667ab', '#002fa7', '#939597', '#f5df4d', '#ff6f61', '#88B04B', '#F7CAC9', '#91A8D0', '#964F4C', '#45B5AA']
+  const userContent = (
+    <Button type="text" onClick={() => loginout()}>注销</Button>
+  )
   return (
     <Header className="header">
       <div className="header-trigger" onClick={() => props.onClick()}>
@@ -57,6 +71,9 @@ export function BoardHeader(props) {
           <Button className="header-color" type="primary" onClick={() => setShowColorPicker(!showColorPicker)}>主题色</Button>
           {showColorPicker && <TwitterPicker colors={presetColors} color={globalConfig.theme.primaryColor} triangle="top-right" className="header-color-picker" onChange={handleChangeColor}></TwitterPicker>}
         </div>
+        <Popover placement="bottom" content={userContent} trigger="hover">
+          <Avatar className="header-avatar" style={{ backgroundColor: globalConfig?.theme?.primaryColor || '', verticalAlign: 'middle' }}>{loginStatus?.username?.substring(0, 3) || ''}</Avatar>
+        </Popover>
       </div>
     </Header>
   )
