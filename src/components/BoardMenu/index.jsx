@@ -64,7 +64,7 @@ export function BoardMenu() {
         )
       } else {
         return (
-          <Menu.Item key={item.path}>
+          <Menu.Item key={item.path} icon={item.icon}>
             <Link to={item.url}>{item.name}</Link>
           </Menu.Item>
         )

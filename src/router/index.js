@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import store from '../store';
 import Spinner from '../components/Spinner'
-import { HomeOutlined, AppstoreOutlined, NumberOutlined } from '@ant-design/icons';
+import { HomeOutlined, AppstoreOutlined, CalculatorOutlined } from '@ant-design/icons';
 
 // 懒加载
 const lazyLoad = (path, isComponent = false) => {
@@ -43,7 +43,6 @@ const menu = [
           {
             path: 'game',
             name: '三连棋',
-            icon: <NumberOutlined />,
             element: lazyLoad('TicTacToe', 1)
           },
           {
@@ -52,6 +51,12 @@ const menu = [
             element: lazyLoad('List', 1)
           },
         ]
+      },
+      {
+        path: 'calc',
+        element: lazyLoad('Calc'),
+        name: '算法',
+        icon: <CalculatorOutlined />,
       },
     ]
   },
