@@ -28,6 +28,9 @@ function Calc() {
       case 5:
         quickSort(inputValue)
         break;
+      case 6:
+        bubbleSort2(inputValue)
+        break;
       default:
         break;
     }
@@ -44,6 +47,27 @@ function Calc() {
       }
     }
     console.timeEnd('冒泡算法耗时')
+    console.log('arr: ', arr);
+    setInputStr(`${JSON.stringify(arr)}`)
+  }
+  const bubbleSort2 = (arr) => {
+    // 改进后的冒泡算法
+    // 用index记录最后一次交换位置的地方，下一次冒泡只需要扫描到index 的位置就好
+    console.time('改进后的冒泡算法耗时')
+    let i = arr.length - 1
+    while(i > 0) {
+      let index = 0
+      for(let j = 0; j < i; j++) {
+        if (arr[j] > arr[j + 1]) {
+          index = j
+          let tmp = arr[j]
+          arr[j] = arr[j + 1]
+          arr[j + 1] = tmp
+        }
+      }
+      i = index
+    }
+    console.timeEnd('改进后的冒泡算法耗时')
     console.log('arr: ', arr);
     setInputStr(`${JSON.stringify(arr)}`)
   }
@@ -153,6 +177,7 @@ function Calc() {
       <Input.TextArea ref={inputArea} defaultValue={randomNum()} className="calc-area" style={{ height: '100%' }} />
       <div className="calc-btn-group">
         <Button type="primary" className="calc-btn" onClick={() => handleCalc(1)}>冒泡算法</Button>
+        <Button type="primary" className="calc-btn" onClick={() => handleCalc(6)}>冒泡改进</Button>
         <Button type="primary" className="calc-btn" onClick={() => handleCalc(2)}>选择算法</Button>
         <Button type="primary" className="calc-btn" onClick={() => handleCalc(3)}>插入算法</Button>
         <Button type="primary" className="calc-btn" onClick={() => handleCalc(4)}>归并算法</Button>
